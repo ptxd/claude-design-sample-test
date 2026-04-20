@@ -1,1 +1,0 @@
-#Sites designed with the help of Claude Design.
