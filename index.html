@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Invest in Asia — The Next Decade</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #0e0c0a;
+  --bg-2: #151210;
+  --bg-3: #1c1815;
+  --ink: #ece6dc;
+  --ink-dim: #a69f93;
+  --ink-mute: #6b6459;
+  --rule: #2a2520;
+  --accent: oklch(0.62 0.16 32);
+  --accent-dim: oklch(0.42 0.09 32);
+  --gold: oklch(0.78 0.09 80);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- Typography ---------- */
+.display{font-family:var(--serif);font-weight:300;letter-spacing:-0.02em;line-height:0.95}
+.serif{font-family:var(--serif)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-dim)}
+.mono-sm{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-mute)}
+.italic{font-style:italic}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 32px;
+  background: linear-gradient(180deg, rgba(14,12,10,0.92), rgba(14,12,10,0.0));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.topbar .brand{font-family:var(--serif);font-size:18px;letter-spacing:-0.01em}
+.topbar .brand em{font-style:italic;color:var(--accent)}
+.topbar nav{display:flex;gap:28px}
+.topbar nav a{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;transition:color .2s}
+.topbar nav a:hover{color:var(--ink)}
+.topbar .meta{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;min-height:100vh;
+  display:grid;grid-template-rows: 1fr auto;
+  overflow:hidden;
+  background: #000;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background-image: url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=2400&q=80');
+  background-size:cover;background-position:center;
+  filter: brightness(0.55) saturate(0.9) contrast(1.05);
+}
+.hero-img::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(14,12,10,0.55) 0%, rgba(14,12,10,0.2) 35%, rgba(14,12,10,0.9) 100%),
+    radial-gradient(ellipse at 20% 30%, rgba(0,0,0,0.0), rgba(0,0,0,0.35) 70%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding: 180px 56px 64px;
+  display:grid;grid-template-columns: 1fr;
+  gap:48px;
+  max-width:1760px;margin:0 auto;width:100%;
+}
+.hero-eyebrow{display:flex;align-items:center;gap:18px}
+.hero-eyebrow .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent)}
+.hero-title{
+  font-family:var(--serif);font-weight:300;
+  font-size: clamp(56px, 9vw, 156px);
+  line-height:0.92;letter-spacing:-0.03em;
+  max-width: 14ch;
+}
+.hero-title em{font-style:italic;color:var(--accent);font-weight:300}
+.hero-sub{
+  max-width: 58ch;font-size:18px;line-height:1.55;color:var(--ink-dim);
+  font-weight:300;
+}
+.hero-footer{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns: repeat(4, 1fr);
+  border-top:1px solid var(--rule);
+  padding: 22px 56px;
+  max-width:1760px;margin:0 auto;width:100%;
+}
+.hero-stat .num{font-family:var(--serif);font-size:40px;font-weight:300;letter-spacing:-0.02em;line-height:1}
+.hero-stat .num em{font-style:italic;color:var(--accent)}
+.hero-stat .lbl{margin-top:8px}
+.hero-stat + .hero-stat{border-left:1px solid var(--rule);padding-left:28px}
+.hero-stat{padding-right:28px}
+
+.scroll-cue{
+  position:absolute;bottom:26px;right:56px;z-index:3;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.scroll-cue .bar{width:32px;height:1px;background:var(--ink-dim);position:relative;overflow:hidden}
+.scroll-cue .bar::after{content:"";position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:translateX(-100%)}50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* ---------- Section frame ---------- */
+.section{padding: 120px 56px;max-width:1760px;margin:0 auto;width:100%}
+.section-head{
+  display:grid;grid-template-columns: 1fr 2fr;gap:64px;
+  border-top:1px solid var(--rule);
+  padding-top:28px;margin-bottom:72px;
+}
+.section-head .num{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--accent)}
+.section-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,76px);line-height:1;letter-spacing:-0.02em}
+.section-head h2 em{font-style:italic;color:var(--accent);font-weight:300}
+
+/* ---------- Thesis ---------- */
+.thesis-body{display:grid;grid-template-columns: 5fr 7fr;gap:88px;align-items:start}
+.thesis-body .lede{font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1.35;font-weight:300;color:var(--ink)}
+.thesis-body .lede::first-letter{
+  font-size:96px;float:left;line-height:0.85;padding:6px 14px 0 0;
+  color:var(--accent);font-weight:300;
+}
+.thesis-cols{column-count:2;column-gap:40px;color:var(--ink-dim);font-size:15px;line-height:1.65}
+.thesis-cols p + p{margin-top:14px}
+
+.pillars{
+  margin-top:88px;
+  display:grid;grid-template-columns: repeat(4,1fr);
+  border-top:1px solid var(--rule);
+}
+.pillar{padding:28px 24px 32px;border-right:1px solid var(--rule)}
+.pillar:last-child{border-right:none}
+.pillar .ord{font-family:var(--mono);font-size:10px;letter-spacing:0.24em;color:var(--accent);margin-bottom:18px}
+.pillar h3{font-family:var(--serif);font-weight:300;font-size:24px;letter-spacing:-0.01em;line-height:1.15;margin-bottom:10px}
+.pillar p{font-size:13.5px;color:var(--ink-dim);line-height:1.6}
+
+/* ---------- Macro data block ---------- */
+.macro{
+  background: var(--bg-2);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.macro-inner{max-width:1760px;margin:0 auto;padding:100px 56px;display:grid;grid-template-columns: 5fr 7fr;gap:80px}
+.macro h2{font-family:var(--serif);font-weight:300;font-size:clamp(36px,4.2vw,64px);line-height:1;letter-spacing:-0.02em;margin-bottom:28px}
+.macro h2 em{font-style:italic;color:var(--accent)}
+.macro .caption{color:var(--ink-dim);font-size:15px;line-height:1.65;max-width:46ch}
+
+.chart{border:1px solid var(--rule);background:var(--bg-3);padding:28px}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}
+.chart-title{font-family:var(--serif);font-size:20px}
+.chart-legend{display:flex;gap:18px}
+.chart-legend span{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);display:flex;align-items:center;gap:6px}
+.chart-legend i{width:10px;height:2px;display:block}
+
+.bars{display:grid;grid-template-columns: 1fr;gap:14px;margin-top:12px}
+.bar-row{display:grid;grid-template-columns: 110px 1fr 70px;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-dim)}
+.bar-track{position:relative;height:18px;background:rgba(255,255,255,0.03);border:1px solid var(--rule)}
+.bar-track .fill{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg, var(--accent-dim), var(--accent))}
+.bar-track .fill.alt{background:rgba(236,230,220,0.25)}
+.bar-val{color:var(--ink);text-align:right;font-variant-numeric: tabular-nums}
+
+.metric-grid{margin-top:36px;display:grid;grid-template-columns: repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.metric{background:var(--bg-3);padding:22px 20px}
+.metric .v{font-family:var(--serif);font-size:38px;line-height:1;letter-spacing:-0.02em;font-weight:300}
+.metric .v em{font-style:italic;color:var(--accent)}
+.metric .l{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim)}
+
+/* ---------- Country chapters ---------- */
+.country{
+  position:relative;min-height:100vh;
+  display:grid;grid-template-columns: 1fr 1fr;
+  border-top:1px solid var(--rule);
+}
+.country .photo{
+  position:relative;min-height:560px;background:#000;overflow:hidden;
+}
+.country .photo .img{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.02);transition:transform 1.2s ease;
+}
+.country:hover .photo .img{transform:scale(1.08)}
+.country .photo::after{
+  content:"";position:absolute;inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.55));
+  pointer-events:none;
+}
+.photo-caption{
+  position:absolute;left:24px;bottom:20px;right:24px;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+  color:var(--ink);
+}
+.photo-caption .city{font-family:var(--serif);font-style:italic;font-size:16px}
+.photo-caption .coord{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(236,230,220,0.75)}
+
+.country .body{padding: 88px 56px;display:flex;flex-direction:column;gap:28px;background:var(--bg)}
+.country.reverse{grid-template-columns: 1fr 1fr}
+.country.reverse .photo{order:2}
+.country.reverse .body{order:1}
+
+.ctry-eyebrow{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--rule);padding-bottom:14px}
+.ctry-eyebrow .n{color:var(--accent)}
+.ctry-name{font-family:var(--serif);font-size:clamp(48px,6vw,96px);font-weight:300;line-height:0.95;letter-spacing:-0.03em}
+.ctry-name em{font-style:italic;color:var(--accent);font-weight:300}
+.ctry-tag{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink-dim);max-width:36ch;line-height:1.35}
+.ctry-body{color:var(--ink-dim);font-size:15px;line-height:1.65;max-width:58ch}
+
+.ctry-stats{display:grid;grid-template-columns: repeat(4,1fr);gap:1px;background:var(--rule);margin-top:12px}
+.ctry-stats .s{background:var(--bg);padding:16px 14px}
+.ctry-stats .v{font-family:var(--serif);font-size:26px;font-weight:300;letter-spacing:-0.01em}
+.ctry-stats .v em{font-style:italic;color:var(--accent)}
+.ctry-stats .l{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);margin-top:4px}
+
+.ctry-sectors{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tag{border:1px solid var(--rule);padding:6px 10px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim)}
+
+/* ---------- Pullquote ---------- */
+.pullquote{
+  position:relative;
+  padding: 140px 56px;max-width:1760px;margin:0 auto;
+  display:grid;grid-template-columns: 1fr 3fr 1fr;gap:40px;align-items:start;
+  border-top:1px solid var(--rule);
+}
+.pullquote .qmark{font-family:var(--serif);font-style:italic;font-size:140px;line-height:0.6;color:var(--accent);margin-top:-10px}
+.pullquote q{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(32px,3.2vw,56px);line-height:1.15;letter-spacing:-0.02em;
+  quotes:"" "";
+}
+.pullquote q em{font-style:italic;color:var(--accent)}
+.pullquote .by{margin-top:28px;display:flex;flex-direction:column;gap:4px}
+.pullquote .by .n{font-family:var(--serif);font-size:16px}
+.pullquote .by .t{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* ---------- China context ---------- */
+.china{
+  position:relative;
+  background: var(--bg-2);
+  padding: 140px 56px;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.china-inner{max-width:1760px;margin:0 auto;display:grid;grid-template-columns: 1fr 1fr;gap:72px;align-items:center}
+.china-photo{
+  aspect-ratio: 4/5;background-size:cover;background-position:center;
+  background-image:url('https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?auto=format&fit=crop&w=1800&q=80');
+  position:relative;
+}
+.china-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.4))}
+.china-photo .cap{position:absolute;bottom:18px;left:20px;font-family:var(--serif);font-style:italic;color:var(--ink);font-size:16px;z-index:2}
+.china-photo .cap .coord{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:0.2em;color:rgba(236,230,220,0.75);margin-top:4px}
+.china h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-0.02em;margin-bottom:28px}
+.china h2 em{font-style:italic;color:var(--accent)}
+.china p{color:var(--ink-dim);font-size:16px;line-height:1.65;max-width:52ch;margin-bottom:16px}
+.china .kp{margin-top:32px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.china .kp .k{background:var(--bg-2);padding:22px 20px}
+.china .kp .v{font-family:var(--serif);font-size:32px;font-weight:300;letter-spacing:-0.01em}
+.china .kp .v em{font-style:italic;color:var(--accent)}
+.china .kp .l{margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* ---------- CTA ---------- */
+.cta{
+  position:relative;min-height:70vh;
+  display:flex;align-items:center;justify-content:center;
+  background-image: url('https://images.unsplash.com/photo-1506351421178-63b52a2d2562?auto=format&fit=crop&w=2400&q=80');
+  background-size:cover;background-position:center;
+  isolation:isolate;
+}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(14,12,10,0.7), rgba(14,12,10,0.92));z-index:0}
+.cta-inner{position:relative;z-index:1;text-align:center;padding:120px 56px;max-width:1100px}
+.cta h2{font-family:var(--serif);font-weight:300;font-size:clamp(44px,6vw,96px);line-height:1;letter-spacing:-0.02em;margin-bottom:28px}
+.cta h2 em{font-style:italic;color:var(--accent)}
+.cta p{color:var(--ink-dim);font-size:17px;line-height:1.6;max-width:56ch;margin:0 auto 40px}
+.cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+  padding:18px 32px;border:1px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .2s;
+}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn .arrow{display:inline-block}
+
+/* ---------- Disclaimer footer ---------- */
+.disclaimer{
+  background:#080706;color:var(--ink-mute);
+  border-top:1px solid var(--rule);
+  padding: 72px 56px 40px;
+}
+.disclaimer-inner{max-width:1760px;margin:0 auto}
+.disclaimer-top{
+  display:grid;grid-template-columns: 1fr 3fr;gap:64px;
+  padding-bottom:44px;border-bottom:1px solid var(--rule);
+}
+.disclaimer-top .mark{font-family:var(--serif);font-size:22px;color:var(--ink)}
+.disclaimer-top .mark em{font-style:italic;color:var(--accent)}
+.disclaimer-top .mark .tag{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-mute)}
+.notice{display:grid;grid-template-columns: 1fr 1fr;gap:40px}
+.notice h4{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.notice p{font-family:var(--sans);font-size:12.5px;line-height:1.65;color:var(--ink-mute);margin-bottom:12px}
+.notice p strong{color:var(--ink-dim);font-weight:500}
+.notice ul{list-style:none;margin:8px 0 12px;padding:0}
+.notice li{font-size:12.5px;line-height:1.55;color:var(--ink-mute);padding-left:16px;position:relative;margin-bottom:4px}
+.notice li::before{content:"·";position:absolute;left:4px;top:-2px;color:var(--accent);font-size:16px}
+
+.disclaimer-bottom{
+  padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-mute);
+}
+.disclaimer-bottom .r{display:flex;gap:22px}
+
+/* ---------- Tweaks panel ---------- */
+.tweaks{
+  position:fixed;bottom:20px;right:20px;z-index:200;
+  width:280px;background:rgba(14,12,10,0.92);backdrop-filter:blur(10px);
+  border:1px solid var(--rule);padding:16px;color:var(--ink);
+  font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  display:none;
+}
+.tweaks.active{display:block}
+.tweaks h5{font-family:var(--serif);font-style:italic;font-size:16px;font-weight:300;letter-spacing:0;text-transform:none;margin-bottom:12px;color:var(--ink)}
+.tweaks .row{display:flex;justify-content:space-between;align-items:center;margin:8px 0}
+.tweaks .swatches{display:flex;gap:6px}
+.tweaks .sw{width:20px;height:20px;border:1px solid var(--rule);cursor:pointer;border-radius:50%}
+.tweaks .sw.active{outline:1px solid var(--ink);outline-offset:2px}
+.tweaks select,.tweaks input[type=range]{background:transparent;color:var(--ink);border:1px solid var(--rule);padding:4px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px){
+  .topbar nav{display:none}
+  .hero-content{padding:140px 24px 40px}
+  .hero-footer{grid-template-columns: repeat(2,1fr);padding:18px 24px;row-gap:22px}
+  .hero-stat + .hero-stat{border-left:none;padding-left:0}
+  .hero-stat:nth-child(2){border-left:1px solid var(--rule);padding-left:20px}
+  .section{padding:72px 24px}
+  .section-head{grid-template-columns:1fr;gap:14px}
+  .thesis-body{grid-template-columns:1fr;gap:40px}
+  .thesis-cols{column-count:1}
+  .pillars{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(2){border-right:none}
+  .pillar:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .macro-inner{grid-template-columns:1fr;padding:72px 24px;gap:40px}
+  .country{grid-template-columns:1fr}
+  .country.reverse .photo{order:0}
+  .country.reverse .body{order:1}
+  .country .body{padding:48px 24px}
+  .pullquote{grid-template-columns:1fr;padding:80px 24px}
+  .pullquote .qmark{font-size:80px}
+  .china-inner{grid-template-columns:1fr;gap:40px}
+  .china{padding:80px 24px}
+  .disclaimer-top{grid-template-columns:1fr;gap:24px}
+  .notice{grid-template-columns:1fr;gap:24px}
+  .ctry-stats{grid-template-columns:repeat(2,1fr)}
+  .scroll-cue{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="brand">Meridian <em>/</em> Asia Pacific Growth Fund</div>
+  <nav>
+    <a href="#thesis">Thesis</a>
+    <a href="#macro">Macro</a>
+    <a href="#countries">Countries</a>
+    <a href="#china">China Context</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="meta">Q2 · 2026 · Confidential</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span class="mono">The Investment Case for Emerging Asia</span>
+      <span class="mono">—</span>
+      <span class="mono">Vol. III</span>
+    </div>
+    <h1 class="hero-title">The <em>next</em><br/>decade<br/>belongs to Asia.</h1>
+    <p class="hero-sub">A structural realignment of capital, manufacturing, and demographics is underway across five markets — Malaysia, Thailand, Indonesia, Vietnam, and the Philippines — together forming the most consequential growth story since post-war Japan. This is the Meridian case for long-dated exposure.</p>
+  </div>
+
+  <div class="hero-footer">
+    <div class="hero-stat">
+      <div class="num"><em>$4.5</em>T</div>
+      <div class="lbl mono">Combined 2030 GDP</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num"><em>685</em>M</div>
+      <div class="lbl mono">Population, ASEAN-5</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num"><em>5.2</em>%</div>
+      <div class="lbl mono">Avg. Real GDP Growth</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num"><em>29</em>yrs</div>
+      <div class="lbl mono">Median Age</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <span class="bar"></span>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="section" id="thesis">
+  <div class="section-head">
+    <div class="num">§ 01 — Thesis</div>
+    <h2>A generational reallocation of <em>capital, factories, and talent</em> into Southeast Asia.</h2>
+  </div>
+
+  <div class="thesis-body">
+    <p class="lede">For three decades, global growth narratives were written in a single country. The next chapter will be written across five — and the capital positioning itself today will compound for a generation.</p>
+    <div class="thesis-cols">
+      <p>The ASEAN-5 — Malaysia, Thailand, Indonesia, Vietnam, and the Philippines — are no longer peripheral to the global supply chain. They are becoming its center of gravity. Apparel in Ho Chi Minh, semiconductors in Penang, nickel refining in Sulawesi, electronics in Luzon, automotives in Rayong: the rebuild of the world's industrial map runs directly through them.</p>
+      <p>Unlike the China story that preceded them, this growth arrives distributed. Five sovereign economies, five central banks, five distinct demographic curves — and a free-trade framework (RCEP) that now binds them into the largest trading bloc on Earth. For investors, that means diversification baked into the thesis itself.</p>
+      <p>Median age across the bloc is 29. Internet penetration has tripled in a decade. Foreign direct investment into the region has surpassed inbound FDI into China in every year since 2023. The long-duration tailwinds — urbanization, formalization, middle-class expansion — remain in their early innings.</p>
+      <p>Meridian's mandate is simple: underwrite the companies, infrastructure, and platforms that will serve the next half-billion consumers entering the formal economy. We believe the risk-adjusted return profile here is unmatched in global markets today.</p>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="ord">01</div>
+      <h3>Supply-chain redirection</h3>
+      <p>Multinationals are building redundant capacity outside China. Vietnam and Malaysia are the primary beneficiaries — but Thailand and Indonesia are gaining share in higher-value segments quarter over quarter.</p>
+    </div>
+    <div class="pillar">
+      <div class="ord">02</div>
+      <h3>Demographic dividend</h3>
+      <p>A working-age population still expanding, in contrast to every G7 economy. 190 million new consumers will enter the formal economy by 2035 — the largest cohort anywhere on Earth.</p>
+    </div>
+    <div class="pillar">
+      <div class="ord">03</div>
+      <h3>Capital deepening</h3>
+      <p>Domestic equity markets, pension pools, and sovereign allocators are maturing. Local-currency debt markets have tripled since 2015, providing deep anchor capital previously only available to OECD issuers.</p>
+    </div>
+    <div class="pillar">
+      <div class="ord">04</div>
+      <h3>Green-industry leadership</h3>
+      <p>Indonesia controls ~40% of global nickel reserves. Vietnam leads regional rooftop solar. Malaysia's semiconductor packaging is critical to every AI accelerator shipped. The energy transition runs through Southeast Asia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO DATA -->
+<section class="macro" id="macro">
+  <div class="macro-inner">
+    <div>
+      <div class="mono" style="margin-bottom:18px">§ 02 — Macro</div>
+      <h2>The numbers that made us <em>move</em>.</h2>
+      <p class="caption">We underwrote the region on five headline metrics: real growth, demographic runway, infrastructure spend, FDI velocity, and equity-market depth. On each, ASEAN-5 now outpaces every other major emerging bloc — and on most, every developed one.</p>
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="v"><em>5.2</em>%</div>
+          <div class="l">GDP Growth '25–'30e</div>
+        </div>
+        <div class="metric">
+          <div class="v"><em>$229</em>B</div>
+          <div class="l">Inbound FDI '25</div>
+        </div>
+        <div class="metric">
+          <div class="v"><em>+3.8</em>x</div>
+          <div class="l">MSCI ASEAN vs. EM (10y)</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="chart">
+        <div class="chart-head">
+          <div class="chart-title serif italic">Real GDP growth · 2026e (IMF)</div>
+          <div class="chart-legend">
+            <span><i style="background:var(--accent)"></i>ASEAN-5</span>
+            <span><i style="background:rgba(236,230,220,0.4)"></i>Benchmark</span>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><span>Vietnam</span><div class="bar-track"><div class="fill" style="width:92%"></div></div><span class="bar-val">6.4%</span></div>
+          <div class="bar-row"><span>Philippines</span><div class="bar-track"><div class="fill" style="width:86%"></div></div><span class="bar-val">6.0%</span></div>
+          <div class="bar-row"><span>Indonesia</span><div class="bar-track"><div class="fill" style="width:74%"></div></div><span class="bar-val">5.1%</span></div>
+          <div class="bar-row"><span>Malaysia</span><div class="bar-track"><div class="fill" style="width:64%"></div></div><span class="bar-val">4.5%</span></div>
+          <div class="bar-row"><span>Thailand</span><div class="bar-track"><div class="fill" style="width:48%"></div></div><span class="bar-val">3.4%</span></div>
+          <div class="bar-row"><span style="color:var(--ink-mute)">China</span><div class="bar-track"><div class="fill alt" style="width:62%"></div></div><span class="bar-val" style="color:var(--ink-dim)">4.3%</span></div>
+          <div class="bar-row"><span style="color:var(--ink-mute)">United States</span><div class="bar-track"><div class="fill alt" style="width:28%"></div></div><span class="bar-val" style="color:var(--ink-dim)">2.0%</span></div>
+          <div class="bar-row"><span style="color:var(--ink-mute)">Euro Area</span><div class="bar-track"><div class="fill alt" style="width:18%"></div></div><span class="bar-val" style="color:var(--ink-dim)">1.3%</span></div>
+        </div>
+        <div class="mono-sm" style="margin-top:22px;border-top:1px solid var(--rule);padding-top:14px">Source: IMF WEO (Apr 2026), ADB Asian Development Outlook. Illustrative; hypothetical projections.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRY CHAPTERS -->
+<div id="countries">
+
+<!-- VIETNAM -->
+<section class="country">
+  <div class="photo">
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="photo-caption">
+      <div class="city">Ho Chi Minh City at dusk</div>
+      <div class="coord">10°46′N · 106°40′E</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ctry-eyebrow"><span class="n">§ 03.01 · Country</span><span>Socialist Republic of Vietnam</span></div>
+    <div class="ctry-name"><em>Viet</em>nam</div>
+    <div class="ctry-tag">The factory the world is actively relocating to. High-throughput manufacturing at OECD quality, at a fraction of the cost.</div>
+    <div class="ctry-body">Vietnam has quietly become the single largest beneficiary of the global "China+1" reshoring wave. Electronics, footwear, furniture, and increasingly semiconductor assembly are anchoring in a corridor that runs from Haiphong in the north to Ho Chi Minh City in the south. With a young, literate labor force and 17 active free-trade agreements, Vietnam offers the rare combination of cost advantage and market access.</div>
+    <div class="ctry-stats">
+      <div class="s"><div class="v"><em>6.4</em>%</div><div class="l">GDP Growth '26e</div></div>
+      <div class="s"><div class="v"><em>101</em>M</div><div class="l">Population</div></div>
+      <div class="s"><div class="v"><em>$38</em>B</div><div class="l">FDI Inflows</div></div>
+      <div class="s"><div class="v"><em>17</em></div><div class="l">Active FTAs</div></div>
+    </div>
+    <div class="ctry-sectors">
+      <span class="tag">Electronics</span><span class="tag">Textiles</span><span class="tag">Logistics</span><span class="tag">Fintech</span><span class="tag">Semiconductors</span>
+    </div>
+  </div>
+</section>
+
+<!-- INDONESIA -->
+<section class="country reverse">
+  <div class="photo">
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="photo-caption">
+      <div class="city">Jakarta, Central Business District</div>
+      <div class="coord">6°12′S · 106°49′E</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ctry-eyebrow"><span class="n">§ 03.02 · Country</span><span>Republic of Indonesia</span></div>
+    <div class="ctry-name">Indo<em>nesia</em></div>
+    <div class="ctry-tag">The anchor market — a continent-sized consumer economy sitting on the world's most strategic mineral endowment.</div>
+    <div class="ctry-body">Indonesia is the fourth-most-populous country on earth and the G20's fastest-growing major economy. Beyond scale, it holds the world's largest nickel reserves — the backbone of EV battery chemistry — and has moved aggressively to build midstream refining capacity. The opening of Nusantara as a planned capital signals a state willing to make thirty-year bets. So are we.</div>
+    <div class="ctry-stats">
+      <div class="s"><div class="v"><em>5.1</em>%</div><div class="l">GDP Growth '26e</div></div>
+      <div class="s"><div class="v"><em>282</em>M</div><div class="l">Population</div></div>
+      <div class="s"><div class="v"><em>42</em>%</div><div class="l">Global Nickel Output</div></div>
+      <div class="s"><div class="v"><em>$1.4</em>T</div><div class="l">Nominal GDP</div></div>
+    </div>
+    <div class="ctry-sectors">
+      <span class="tag">Critical Minerals</span><span class="tag">Digital Economy</span><span class="tag">Consumer</span><span class="tag">Infrastructure</span><span class="tag">EV Supply Chain</span>
+    </div>
+  </div>
+</section>
+
+<!-- MALAYSIA -->
+<section class="country">
+  <div class="photo">
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="photo-caption">
+      <div class="city">Kuala Lumpur, Petronas Towers</div>
+      <div class="coord">3°09′N · 101°42′E</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ctry-eyebrow"><span class="n">§ 03.03 · Country</span><span>Federation of Malaysia</span></div>
+    <div class="ctry-name"><em>Malay</em>sia</div>
+    <div class="ctry-tag">The quiet semiconductor superpower — and the region's most institutional capital market.</div>
+    <div class="ctry-body">Malaysia is the silent node inside every AI accelerator shipped: roughly 13% of global semiconductor test and assembly happens in Penang. Add a mature sovereign wealth architecture (Khazanah, EPF, PNB), deep ringgit bond markets, and a fluent English-language business culture, and Malaysia offers sophisticated infrastructure with emerging-market growth rates. Penang alone attracted over $12B in committed chip investment in the last 24 months.</div>
+    <div class="ctry-stats">
+      <div class="s"><div class="v"><em>4.5</em>%</div><div class="l">GDP Growth '26e</div></div>
+      <div class="s"><div class="v"><em>13</em>%</div><div class="l">Global Chip ATP Share</div></div>
+      <div class="s"><div class="v"><em>$440</em>B</div><div class="l">Nominal GDP</div></div>
+      <div class="s"><div class="v"><em>A-</em></div><div class="l">S&P Sovereign Rating</div></div>
+    </div>
+    <div class="ctry-sectors">
+      <span class="tag">Semiconductors</span><span class="tag">Data Centers</span><span class="tag">Islamic Finance</span><span class="tag">Palm Oil</span><span class="tag">Tourism</span>
+    </div>
+  </div>
+</section>
+
+<!-- THAILAND -->
+<section class="country reverse">
+  <div class="photo">
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1563492065-1a5c74e72af3?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="photo-caption">
+      <div class="city">Bangkok skyline at blue hour</div>
+      <div class="coord">13°45′N · 100°30′E</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ctry-eyebrow"><span class="n">§ 03.04 · Country</span><span>Kingdom of Thailand</span></div>
+    <div class="ctry-name">Thai<em>land</em></div>
+    <div class="ctry-tag">Southeast Asia's industrial maturity trade — and a rising EV manufacturing hub.</div>
+    <div class="ctry-body">Thailand is the "Detroit of Asia": the region's incumbent automotive base, now pivoting hard into electric vehicles. The Eastern Economic Corridor has attracted the largest Chinese EV OEMs (BYD, Great Wall, SAIC) alongside incumbent Japanese capacity. Combine that with a highly developed tourism and healthcare sector and Thailand offers a genuine diversification against more one-note regional exposures.</div>
+    <div class="ctry-stats">
+      <div class="s"><div class="v"><em>3.4</em>%</div><div class="l">GDP Growth '26e</div></div>
+      <div class="s"><div class="v"><em>71</em>M</div><div class="l">Population</div></div>
+      <div class="s"><div class="v"><em>#1</em></div><div class="l">Auto Producer, ASEAN</div></div>
+      <div class="s"><div class="v"><em>40</em>M</div><div class="l">Annual Tourist Arrivals</div></div>
+    </div>
+    <div class="ctry-sectors">
+      <span class="tag">Automotive</span><span class="tag">EV</span><span class="tag">Healthcare</span><span class="tag">Tourism</span><span class="tag">Agriculture</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHILIPPINES -->
+<section class="country">
+  <div class="photo">
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1518509562904-e7ef99cddc85?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="photo-caption">
+      <div class="city">Manila, Bonifacio Global City</div>
+      <div class="coord">14°35′N · 120°58′E</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ctry-eyebrow"><span class="n">§ 03.05 · Country</span><span>Republic of the Philippines</span></div>
+    <div class="ctry-name"><em>Philip</em>pines</div>
+    <div class="ctry-tag">The youngest demographic profile in ASEAN — and the English-speaking backbone of the global services economy.</div>
+    <div class="ctry-body">The Philippines combines the region's youngest population (median age 26) with one of its highest English proficiency rates. This has produced a $40B+ business process outsourcing industry that now services nearly every Fortune 500 company — and is evolving rapidly into higher-value digital services, fintech, and creative industries. Remittances add a durable current-account anchor few peers can match.</div>
+    <div class="ctry-stats">
+      <div class="s"><div class="v"><em>6.0</em>%</div><div class="l">GDP Growth '26e</div></div>
+      <div class="s"><div class="v"><em>118</em>M</div><div class="l">Population</div></div>
+      <div class="s"><div class="v"><em>26</em></div><div class="l">Median Age</div></div>
+      <div class="s"><div class="v"><em>$40</em>B</div><div class="l">BPO Revenue</div></div>
+    </div>
+    <div class="ctry-sectors">
+      <span class="tag">BPO</span><span class="tag">Fintech</span><span class="tag">Digital Banking</span><span class="tag">Remittance Economy</span><span class="tag">Consumer</span>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- PULLQUOTE -->
+<section class="pullquote">
+  <div class="qmark italic">"</div>
+  <div>
+    <q>Asia in the 2030s will do what Asia in the 1990s promised — <em>compound quietly, and all at once</em>.</q>
+    <div class="by">
+      <div class="n">Aisha R. Chen</div>
+      <div class="t">Chief Investment Officer · Meridian APG</div>
+    </div>
+  </div>
+  <div></div>
+</section>
+
+<!-- CHINA CONTEXT -->
+<section class="china" id="china">
+  <div class="china-inner">
+    <div class="china-photo">
+      <div class="cap">Shanghai · Pudong at night<span class="coord">31°13′N · 121°28′E</span></div>
+    </div>
+    <div>
+      <div class="mono" style="margin-bottom:18px;color:var(--accent)">§ 04 — The China Context</div>
+      <h2>A <em>complement</em> to China, not a substitute.</h2>
+      <p>We do not view ASEAN-5 as a zero-sum trade against China. China remains the largest single economy in the region, the deepest manufacturer, and the most important customer for most of these markets. What is changing is the <em>distribution</em> of new marginal capital.</p>
+      <p>Multinationals are adopting "China + 1" — and increasingly "China + 2" — supply-chain strategies. That means incremental factory investment, incremental logistics infrastructure, and incremental consumer reach now splits across Hanoi, Jakarta, Kuala Lumpur, Bangkok, and Manila. The absolute figures for China stay large; the derivative flows to the ASEAN-5 are where our alpha lies.</p>
+      <div class="kp">
+        <div class="k"><div class="v"><em>$18.6</em>T</div><div class="l">China '25 GDP</div></div>
+        <div class="k"><div class="v"><em>24</em>%</div><div class="l">ASEAN Exports to China</div></div>
+        <div class="k"><div class="v"><em>+62</em>%</div><div class="l">FDI Redirect to ASEAN ('19–'25)</div></div>
+        <div class="k"><div class="v"><em>RCEP</em></div><div class="l">Binding Trade Framework</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="mono" style="margin-bottom:24px">§ 05 — Next Step</div>
+    <h2>Position for the next<br/><em>decade of Asia.</em></h2>
+    <p>Meridian APG is accepting allocations from qualified institutional and accredited investors for Fund IV, closing Q4 2026. Request the full confidential memorandum and data room access below.</p>
+    <div class="actions">
+      <a href="#" class="btn primary">Request Memorandum <span class="arrow">→</span></a>
+      <a href="#" class="btn">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER FOOTER -->
+<footer class="disclaimer">
+  <div class="disclaimer-inner">
+
+    <div class="disclaimer-top">
+      <div class="mark">
+        Meridian <em>/</em> APG
+        <span class="tag">Asia Pacific Growth · Est. 2012</span>
+      </div>
+
+      <div class="notice">
+        <div>
+          <h4>Important Notice · Testing & Informational Purposes Only</h4>
+          <p>This material does not constitute an offer to sell, or a solicitation of an offer to buy, any securities in any jurisdiction. <strong>No money or other consideration is being solicited, and none will be accepted.</strong> Any offer will be made only by means of a definitive offering document and in compliance with applicable securities laws.</p>
+          <p><strong>Confidential:</strong> Recipient agrees to keep this presentation strictly confidential and not to copy, distribute, or disclose any portion without prior written consent of Meridian APG.</p>
+          <p>If you are not eligible under applicable securities laws to receive this information, please destroy all copies immediately.</p>
+        </div>
+
+        <div>
+          <h4>Forward-Looking Statements · Safe Harbor</h4>
+          <p>This presentation contains "forward-looking statements" within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934, as amended by the Private Securities Litigation Reform Act of 1995. Forward-looking statements are identified by words such as <em>"believe," "expect," "anticipate," "intend," "aim," "will," "should," "may," "target," "forecast," "project," "plan," "estimate," "optimistic," "continue," "on track,"</em> or similar expressions, and include, without limitation, statements regarding Meridian APG's future revenue, margins, cash flow, capital needs, product development timelines, market size, customer adoption, regulatory approvals, financing plans, and strategic transactions.</p>
+          <p>These statements are based on current expectations, assumptions, and projections, and are subject to known and unknown risks, uncertainties, and other factors that could cause actual results to differ materially. Meaningful cautionary factors include, but are not limited to:</p>
+          <ul>
+            <li>execution risk on product development and commercialization;</li>
+            <li>competition and pricing pressure;</li>
+            <li>dependence on key customers, suppliers, and personnel;</li>
+            <li>ability to raise capital on acceptable terms;</li>
+            <li>regulatory, legal, and compliance developments;</li>
+            <li>macroeconomic conditions, interest rates, and market volatility;</li>
+            <li>risks described in Meridian APG's most recent filings or confidential risk summary dated [Date], which are incorporated by reference.</li>
+          </ul>
+          <p>Forward-looking statements speak only as of the date made. Meridian APG undertakes no duty to update or revise any forward-looking statement, whether as a result of new information, future events, or otherwise, except as required by law.</p>
+          <p><strong>Past performance is not indicative of future results.</strong> Projections are hypothetical, do not reflect actual investment results, and were prepared in good faith with a reasonable basis at the time made, but are not guarantees. Actual results may vary materially.</p>
+          <p><strong>No reliance:</strong> This presentation is for discussion purposes only. Recipients should conduct their own independent investigation and not rely on any forward-looking statement. Nothing herein constitutes legal, tax, investment, or accounting advice. Consult your own advisors.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer-bottom">
+      <div>© 2026 Meridian Asia Pacific Growth · All rights reserved</div>
+      <div class="r">
+        <span>Singapore</span><span>Hong Kong</span><span>New York</span><span>London</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TWEAKS -->
+<div class="tweaks" id="tweaks">
+  <h5>Tweaks</h5>
+  <div class="row"><span>Accent</span>
+    <div class="swatches">
+      <div class="sw" data-accent="oklch(0.62 0.16 32)" style="background:oklch(0.62 0.16 32)"></div>
+      <div class="sw" data-accent="oklch(0.78 0.09 80)" style="background:oklch(0.78 0.09 80)"></div>
+      <div class="sw" data-accent="oklch(0.6 0.12 150)" style="background:oklch(0.6 0.12 150)"></div>
+      <div class="sw" data-accent="oklch(0.58 0.14 265)" style="background:oklch(0.58 0.14 265)"></div>
+      <div class="sw" data-accent="oklch(0.7 0.15 20)" style="background:oklch(0.7 0.15 20)"></div>
+    </div>
+  </div>
+  <div class="row"><span>Theme</span>
+    <select id="theme">
+      <option value="dark">Dark editorial</option>
+      <option value="light">Light editorial</option>
+      <option value="ink">Deep ink</option>
+    </select>
+  </div>
+  <div class="row"><span>Serif weight</span>
+    <input type="range" id="serifw" min="200" max="600" step="50" value="300"/>
+  </div>
+</div>
+
+<script>
+  // ---- Tweaks state (persistable JSON block) ----
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "oklch(0.62 0.16 32)",
+    "theme": "dark",
+    "serifWeight": 300
+  }/*EDITMODE-END*/;
+
+  let currentTweaks = {...TWEAK_DEFAULTS};
+
+  function applyTweaks(t){
+    document.documentElement.style.setProperty('--accent', t.accent);
+    // derive dim
+    document.documentElement.style.setProperty('--accent-dim', t.accent.replace(/oklch\(([\d.]+) ([\d.]+)/, (m,L,C)=>`oklch(${Math.max(0.3, parseFloat(L)-0.2)} ${Math.max(0.05, parseFloat(C)*0.6)}`));
+
+    if(t.theme==='light'){
+      document.documentElement.style.setProperty('--bg','#f6f1e8');
+      document.documentElement.style.setProperty('--bg-2','#ede7db');
+      document.documentElement.style.setProperty('--bg-3','#e4ddcd');
+      document.documentElement.style.setProperty('--ink','#1b1713');
+      document.documentElement.style.setProperty('--ink-dim','#5b5348');
+      document.documentElement.style.setProperty('--ink-mute','#8a8170');
+      document.documentElement.style.setProperty('--rule','#d8d0bf');
+    } else if (t.theme==='ink'){
+      document.documentElement.style.setProperty('--bg','#050609');
+      document.documentElement.style.setProperty('--bg-2','#0a0b0f');
+      document.documentElement.style.setProperty('--bg-3','#0f1016');
+      document.documentElement.style.setProperty('--ink','#e8ebf2');
+      document.documentElement.style.setProperty('--ink-dim','#8c92a3');
+      document.documentElement.style.setProperty('--ink-mute','#555b6b');
+      document.documentElement.style.setProperty('--rule','#1a1d25');
+    } else {
+      document.documentElement.style.setProperty('--bg','#0e0c0a');
+      document.documentElement.style.setProperty('--bg-2','#151210');
+      document.documentElement.style.setProperty('--bg-3','#1c1815');
+      document.documentElement.style.setProperty('--ink','#ece6dc');
+      document.documentElement.style.setProperty('--ink-dim','#a69f93');
+      document.documentElement.style.setProperty('--ink-mute','#6b6459');
+      document.documentElement.style.setProperty('--rule','#2a2520');
+    }
+
+    document.querySelectorAll('.display, .serif, .ctry-name, .hero-title, .chart-title, h2').forEach(el=>{
+      el.style.fontWeight = t.serifWeight;
+    });
+    // UI reflect
+    document.querySelectorAll('.sw').forEach(s=>s.classList.toggle('active', s.dataset.accent===t.accent));
+    const themeSel=document.getElementById('theme'); if(themeSel) themeSel.value=t.theme;
+    const sw=document.getElementById('serifw'); if(sw) sw.value=t.serifWeight;
+  }
+
+  applyTweaks(currentTweaks);
+
+  // Tweaks UI wiring
+  document.querySelectorAll('.sw').forEach(sw=>{
+    sw.addEventListener('click',()=>{
+      currentTweaks.accent = sw.dataset.accent;
+      applyTweaks(currentTweaks);
+      persist();
+    });
+  });
+  document.getElementById('theme').addEventListener('change', e=>{
+    currentTweaks.theme = e.target.value; applyTweaks(currentTweaks); persist();
+  });
+  document.getElementById('serifw').addEventListener('input', e=>{
+    currentTweaks.serifWeight = +e.target.value; applyTweaks(currentTweaks); persist();
+  });
+
+  function persist(){
+    try{
+      window.parent.postMessage({type:'__edit_mode_set_keys', edits: currentTweaks}, '*');
+    }catch(e){}
+  }
+
+  // --- Host protocol for Tweaks toggle ---
+  window.addEventListener('message', (ev)=>{
+    const d = ev.data || {};
+    if(d.type==='__activate_edit_mode'){ document.getElementById('tweaks').classList.add('active'); }
+    if(d.type==='__deactivate_edit_mode'){ document.getElementById('tweaks').classList.remove('active'); }
+  });
+  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(e){}
+</script>
+
+</body>
+</html>
